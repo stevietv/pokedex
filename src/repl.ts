@@ -1,4 +1,24 @@
 import { createInterface } from "node:readline";
+import { commandExit } from "./command_exit.js";
+import { commandHelp } from "./command_help.js";
+import { CLICommand } from "./command.js";
+
+
+export function getCommands(): Record<string, CLICommand> {
+    return {
+        exit: {
+            name: "exit",
+            description: "exits the pokedex",
+            callback: commandExit,
+        },
+        help: {
+            name: "help",
+            description: "lists all commands",
+            callback: commandHelp,
+        },
+    };
+}
+
 
 export function cleanInput(input: string): string[] {
     let output = input
@@ -22,8 +42,20 @@ export function startREPL() {
             rl.prompt();
             return;
         }
-        console.log(`Your command was: ${inputArray[0]}`);
-        rl.prompt();y
+        const command = getCommands()[inputArray[0]];
+        if (command) {
+            try {
+                command.callback(getCommands());
+            } catch (err) {
+                if (err instanceof Error) {
+                    console.error("Error encounterd: ", err);
+                }
+            }
+        } else {
+            console.log("Unknown command");
+        }
+        
+        rl.prompt();
       }
     )
 }
