@@ -1,6 +1,6 @@
 import { State } from "./state.js";
 
-export function startREPL(state: State) {
+export async function startREPL(state: State) {
     let rl = state.rl;
     rl.prompt();
 

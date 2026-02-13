@@ -6,6 +6,6 @@ export async function commandMap(state: State): Promise<void> {
         console.log(location.name);
     }
 
-    state.nextLocationsURL = locations.next;
-    state.prevLocationsURL = locations.previous;
+    state.nextLocationsURL = locations.next ?? "";
+    state.prevLocationsURL = locations.previous ?? "";
 }
