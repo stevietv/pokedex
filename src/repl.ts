@@ -4,7 +4,7 @@ export function startREPL(state: State) {
     let rl = state.rl;
     rl.prompt();
 
-    rl.on("line", (input) => {
+    rl.on("line", async (input) => {
         const inputArray = cleanInput(input);
         if (inputArray.length === 0) {
             rl.prompt();
@@ -15,7 +15,7 @@ export function startREPL(state: State) {
 
         if (command) {
             try {
-                command.callback(state);
+                await command.callback(state);
             } catch (err) {
                 if (err instanceof Error) {
                     console.error("Error encounterd: ", err);
