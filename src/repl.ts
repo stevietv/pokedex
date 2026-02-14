@@ -12,10 +12,11 @@ export async function startREPL(state: State) {
         }
 
         const command = state.commands[inputArray[0]];
+        const args: string[] = inputArray.slice(1);
 
         if (command) {
             try {
-                await command.callback(state);
+                await command.callback(state, ...args);
             } catch (err) {
                 if (err instanceof Error) {
                     console.error("Error encounterd: ", err);

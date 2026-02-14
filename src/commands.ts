@@ -1,4 +1,5 @@
 import { commandExit } from "./command_exit.js";
+import { commandExplore } from "./command_explore.js";
 import { commandHelp } from "./command_help.js";
 import { commandMap } from "./command_map.js";
 import { commandMapBack } from "./command_mapBack.js";
@@ -16,6 +17,11 @@ export function getCommands(): Record<string, CLICommand> {
             name: "map back",
             description: "display the previous 20 map locations",
             callback: commandMapBack,
+        },
+        explore: {
+            name:"explore <location>",
+            description: "Provide an area name to explore the area and list the pokemon found",
+            callback: commandExplore,
         },
         help: {
             name: "help",

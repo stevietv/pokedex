@@ -41,7 +41,7 @@ export class PokeAPI {
     const cachedResult = this.#cache.get(fetchURL);
 
     if(cachedResult) {
-      return cachedResult.val;
+      return cachedResult;
     }
 
     try {
