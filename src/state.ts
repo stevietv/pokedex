@@ -17,7 +17,7 @@ export type State = {
     pokedex: Record<string, Pokemon>;
 }
 
-export function initState(): State {
+export function initState(cacheTimeout: number): State {
     let state: State = {
         rl: createInterface({
             input: process.stdin,
@@ -25,7 +25,7 @@ export function initState(): State {
             prompt: "Pokedex > ",
         }),
         commands: getCommands(),
-        pokeAPI: new PokeAPI(),
+        pokeAPI: new PokeAPI(cacheTimeout),
         nextLocationsURL: "",
         prevLocationsURL: "",
         pokedex: {},

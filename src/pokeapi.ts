@@ -4,8 +4,8 @@ export class PokeAPI {
   private static readonly baseURL = "https://pokeapi.co/api/v2";
   #cache: Cache;
 
-  constructor() {
-    this.#cache = new Cache(10000);
+  constructor(cacheTimeout: number) {
+    this.#cache = new Cache(cacheTimeout);
   }
   
   async fetchLocations(pageURL?: string): Promise<ShallowLocations> {
