@@ -7,6 +7,10 @@ export class PokeAPI {
   constructor(cacheTimeout: number) {
     this.#cache = new Cache(cacheTimeout);
   }
+
+  closeCache() {
+    this.#cache.stopReapLoop();
+  }
   
   async fetchLocations(pageURL?: string): Promise<ShallowLocations> {
     const fetchURL = pageURL ? pageURL : `${PokeAPI.baseURL}/location-area/?offset=0&limit=20`;
