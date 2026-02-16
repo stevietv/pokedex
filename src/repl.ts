@@ -19,7 +19,7 @@ export async function startREPL(state: State) {
                 await command.callback(state, ...args);
             } catch (err) {
                 if (err instanceof Error) {
-                    console.error("Error encounterd: ", err);
+                    console.error("Error encounterd: ", err.message);
                 }
             }
         } else {

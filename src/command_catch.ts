@@ -3,8 +3,7 @@ import { State } from "./state.js";
 export async function commandCatch(state: State, ...args: string[]): Promise<void> {
     const pokemonName = args[0] ?? "";
     if (pokemonName === "") {
-        throw new Error("Please try again and enter a pokemon name you wish to catch");
-        return;
+        throw new Error("Usage: catch <pokemon_name>");
     }
 
     const pokemonDetails = await state.pokeAPI.fetchPokemon(pokemonName);

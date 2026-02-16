@@ -3,8 +3,7 @@ import { State } from "./state.js";
 export async function commandExplore(state: State, ...args: string[]): Promise<void> {
     const locationName = args[0] ?? "";
     if (locationName === "") {
-        console.log("please provide a location to explore");
-        return;
+        throw new Error("usage: 'explore <location_name>");
     }
 
     const locationDetails = await state.pokeAPI.fetchLocation(locationName);

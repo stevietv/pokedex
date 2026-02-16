@@ -5,15 +5,13 @@ export async function commandInspect(state: State, ...args: string[]): Promise<v
     const pokemonName = args[0] ?? "";
 
     if (pokemonName === "") {
-        console.log("Usage: 'inspect <pokemon_name>'");
-        return;
+        throw new Error("Usage: 'inspect <pokemon_name>'");
     }
 
     const pokemon = state.pokedex[pokemonName];
 
     if (!pokemon) {
-        console.log(`you have not caught a ${pokemonName}`);
-        return;
+        throw new Error(`you have not caught a ${pokemonName}`);
     }
 
     outputPokemonDetails(pokemon);
