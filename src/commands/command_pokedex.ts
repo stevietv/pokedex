@@ -1,5 +1,5 @@
-import { State } from "./state.js";
-import { Pokemon } from "./pokeapi.js";
+import { State } from "../state.js";
+import { Pokemon } from "../pokeapi.js";
 
 export async function commandPokedex(state: State): Promise<void> {
     if (Object.keys(state.pokedex).length === 0) {

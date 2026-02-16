@@ -1,4 +1,4 @@
-import { State } from "./state.js";
+import { State } from "../state.js";
 
 export async function commandMapBack(state: State): Promise<void> {
     if (state.prevLocationsURL === "") {

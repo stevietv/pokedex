@@ -6,7 +6,7 @@ import { commandMapBack } from "./command_mapBack.js";
 import { commandCatch } from "./command_catch.js";
 import { commandInspect } from "./command_inspect.js";
 import { commandPokedex } from "./command_pokedex.js";
-import { CLICommand } from "./state.js";
+import { CLICommand } from "../state.js";
 
 
 export function getCommands(): Record<string, CLICommand> {
